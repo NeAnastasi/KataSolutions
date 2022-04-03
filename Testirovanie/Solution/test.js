@@ -1,73 +1,60 @@
-function comp(ar1, ar2) {
-    if (ar1 != null && ar2 != null) {
-        for (var i = 0; i < ar1.length; i++) {
-            var expin2 = ar1[i] * ar1[i];
-            var indx = ar2.indexOf(expin2);
-            if (indx == -1) {
-                return false;
-            } else {
-                ar2.splice(indx, 1);
-            }
-        }
-    } else {
-        return false;
-    }
-    return true;
-}
+//tests with mocha
+const compare = require('./Solution.js');
+const assert = require('assert');
 
 describe("Tests", () => {
     it("Comp_\"Same\"ArraysSameOrder_True", () => {
-      a1 = [11, 19, 13, 5];
-      a2 = [11*11, 19*19, 13*13, 5*5];
-    Test.assertEquals(comp(a1, a2), true);
+      let a1 = [11, 19, 13, 5];
+      let a2 = [11*11, 19*19, 13*13, 5*5];
+      assert.equal(compare.comp(a1, a2), true);
     });
     
     it("Comp_\"Same\"ArraysDifferentOrder_True", () => {
       a1 = [11, 19, 13, 5];
       a2 = [5*5, 11*11, 13*13, 19*19];
-    Test.assertEquals(comp(a1, a2), true);
+      assert.equal(compare.comp(a1, a2), true);
     });
   
     it("Comp_\"Same\"ArraysWithDuplicates_True", () => {
       a1 = [11, 11, 13, 5];
       a2 = [11*11, 11*11, 13*13, 5*5];
-    Test.assertEquals(comp(a1, a2), true);
+      assert.equal(compare.comp(a1, a2), true);
     });
     
     it("Comp_ActuallySameArrays_False", () => {
       a1 = [11, 19, 13, 5];
       a2 = [11, 19, 13, 5];
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
   
     it("Comp_WrongSquare_False", () => {
       a1 = [11, 19, 13, 5];
       a2 = [11*17, 19*19, 13*13, 5*5];
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
   
     it("Comp_ArraysSquareDuplicatedWrong_False", () => {
       a1 = [11, 11, 13, 5];
       a2 = [11*11, 13*13, 13*13, 5*5];
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
   
     it("Comp_FirstArrayNull_False", () => {
       a1 = null;
       a2 = [11*11, 13*13, 13*13, 5*5];
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
   
     it("Comp_SecondArrayNull_False", () => {
       a1 = [11, 19, 13, 5];
       a2 = null;
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
     
       it("Comp_Swap\"Same\"Arrays_False", () => {
       a1 = [11*11, 19*19, 13*13, 5*5];
       a2 = [11, 19, 13, 5];
-    Test.assertEquals(comp(a1, a2), false);
+      assert.equal(compare.comp(a1, a2), false);
     });
   });
   
